@@ -963,7 +963,7 @@ cage:
         </div>
       </div>
 
-      <div class="project-card">
+      <div class="project-card" style="margin-bottom:18px;">
         <h3>PotionStacker (Lightweight potion stacking)</h3>
         <p>Lightweight potion stacker with whitelist-based caps and short command aliases.</p>
         <div class="features-grid">
@@ -1010,6 +1010,58 @@ config-version: 1</code></pre>
           <span>Lightweight</span>
           <span>Potions</span>
           <span>Stacking</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <h3>TextHover (Hoverable chat with placeholders)</h3>
+        <p>Add hover text to chat messages with PlaceholderAPI support and simple formatting.</p>
+        <div class="features-grid">
+          <div>
+            <h4>Features</h4>
+            <ul>
+              <li>Custom chat format with hover tooltip</li>
+              <li>PlaceholderAPI support in hover lines</li>
+              <li>Multi-line hover content</li>
+              <li>Lightweight configuration</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Technical</h4>
+            <ul>
+              <li>Paper/Folia compatible</li>
+              <li>No database, config-only</li>
+              <li>Toggleable hover section</li>
+              <li>Uses main chat formatter with placeholders</li>
+            </ul>
+          </div>
+        </div>
+        <img src="https://i.imgur.com/vwoLYlW.png" alt="TextHover preview" loading="lazy" style="width:100%;border-radius:12px;border:1px solid var(--border);box-shadow:var(--shadow);margin:12px 0;">
+        <details style="margin-top:16px;">
+          <summary style="cursor:pointer;color:var(--accent);font-weight:600;">Sample config.yml</summary>
+          <pre style="margin-top:12px;overflow:auto;background:rgba(0,0,0,0.3);padding:14px;border-radius:12px;border:1px solid var(--border);"><code>prefix: '&amp;8[&amp;#FF6600TextHover&amp;8] &amp;8» '
+
+chat:
+  format: '%player_name% &amp;8» &amp;f%message%'
+
+hover:
+  enabled: true
+  lines:
+  - '&amp;6ExampleHoverMessage'
+  - '&amp;f'
+  - '&amp;fYou can use any placeholders'
+  - '&amp;fhere to show statistics on your server.'
+
+config-version: 1</code></pre>
+        </details>
+        <div class="tags">
+          <span>Java</span>
+          <span>Paper</span>
+          <span>Folia</span>
+          <span>PlaceholderAPI</span>
+          <span>Chat</span>
+          <span>Hover</span>
+          <span>Lightweight</span>
         </div>
       </div>
     </section>
