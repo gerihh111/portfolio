@@ -401,7 +401,7 @@ hooks-version: 1</code></pre>
           <span>Java</span>
           <span>Paper</span>
           <span>Folia</span>
-          <span>Lightweight</span>
+          <span>LightWeight</span>
           <span>EnderPearl</span>
         </div>
       </div>
@@ -1013,7 +1013,7 @@ config-version: 1</code></pre>
         </div>
       </div>
 
-      <div class="project-card">
+      <div class="project-card" style="margin-bottom:18px;">
         <h3>TextHover (Hoverable chat with placeholders)</h3>
         <p>Add hover text to chat messages with PlaceholderAPI support and simple formatting.</p>
         <div class="features-grid">
@@ -1062,6 +1062,72 @@ config-version: 1</code></pre>
           <span>Chat</span>
           <span>Hover</span>
           <span>Lightweight</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <h3>Reclaim (Permission-based reward claims)</h3>
+        <p>Permission-gated reclaim rewards with multi-database support and simple config.</p>
+        <div class="features-grid">
+          <div>
+            <h4>Features</h4>
+            <ul>
+              <li>Permission-based reclaims with reward lists</li>
+              <li>Configurable table prefix and claim entries</li>
+              <li>Toggleable database types: H2, SQLite, MySQL</li>
+              <li>Lightweight commands for players</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Technical</h4>
+            <ul>
+              <li>Paper/Folia compatible</li>
+              <li>H2, SQLite, MySQL with pooling options</li>
+              <li>Prefix-based messaging</li>
+              <li>Clean config-driven setup</li>
+            </ul>
+          </div>
+        </div>
+        <video src="https://i.imgur.com/dsCUJfL.mp4" controls loop muted playsinline preload="metadata" style="width:100%;border-radius:12px;border:1px solid var(--border);box-shadow:var(--shadow);margin:12px 0;"></video>
+        <details style="margin-top:16px;">
+          <summary style="cursor:pointer;color:var(--accent);font-weight:600;">Sample config.yml</summary>
+          <pre style="margin-top:12px;overflow:auto;background:rgba(0,0,0,0.3);padding:14px;border-radius:12px;border:1px solid var(--border);"><code>prefix: '&amp;7[&amp;#FFCF00Reclaim&amp;7] &amp;8» '
+
+database:
+  type: h2
+  table-prefix: reclaim_
+  sqlite:
+    file: reclaim.db
+  mysql:
+    host: localhost
+    port: 3306
+    database: reclaim
+    username: root
+    password: ''
+    ssl: false
+    pool-size: 10
+
+reclaims:
+  moon_reclaim:
+    permission: reclaim.moon
+    rewards:
+    - give %player% diamond 5
+  elite_reclaim:
+    permission: reclaim.elite
+    rewards:
+    - give %player% diamond 10
+
+config-version: 1</code></pre>
+        </details>
+        <div class="tags">
+          <span>Java</span>
+          <span>Paper</span>
+          <span>Folia</span>
+          <span>H2</span>
+          <span>SQLite</span>
+          <span>MySQL</span>
+          <span>Rewards</span>
+          <span>Permissions</span>
         </div>
       </div>
     </section>
