@@ -406,7 +406,7 @@ hooks-version: 1</code></pre>
         </div>
       </div>
 
-      <div class="project-card">
+      <div class="project-card" style="margin-bottom:18px;">
         <h3>CocoLevels (Player leveling plugin)</h3>
         <p>Level system with multi-database support, GUI changers, placeholders, and converters between XP, levels, currency, and commands.</p>
         <div class="features-grid">
@@ -614,6 +614,85 @@ gui-version: 1</code></pre>
           <span>MongoDB</span>
           <span>GUI</span>
           <span>Levels</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <h3>AutoPSC (Auto-pickup, smelt, craft)</h3>
+        <p>Auto-pickup, auto-smelt, and auto-craft with WorldGuard flags to toggle per region.</p>
+        <div class="features-grid">
+          <div>
+            <h4>Features</h4>
+            <ul>
+              <li>Auto-pickup blocks and mob drops</li>
+              <li>Auto-smelt raw ores</li>
+              <li>Auto-craft recipes like ingots to blocks</li>
+              <li>Per-feature whitelists for blocks, entities, items</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Technical</h4>
+            <ul>
+              <li>WorldGuard hook with region flags to enable/disable</li>
+              <li>Lightweight, Paper/Folia compatible</li>
+              <li>Separate whitelist control for pickup, smelt, craft</li>
+            </ul>
+          </div>
+        </div>
+        <img src="https://i.imgur.com/CtYX2vK.png" alt="AutoPSC GUI preview" loading="lazy" style="width:100%;border-radius:12px;border:1px solid var(--border);box-shadow:var(--shadow);margin:12px 0;">
+        <details style="margin-top:16px;">
+          <summary style="cursor:pointer;color:var(--accent);font-weight:600;">Sample whitelist.yml</summary>
+          <pre style="margin-top:12px;overflow:auto;background:rgba(0,0,0,0.3);padding:14px;border-radius:12px;border:1px solid var(--border);"><code>autopickup:
+  enabled: false
+  blocks:
+  - DIAMOND_ORE
+  - DEEPSLATE_DIAMOND_ORE
+  - EMERALD_ORE
+  - DEEPSLATE_EMERALD_ORE
+  - GOLD_ORE
+  - DEEPSLATE_GOLD_ORE
+  - IRON_ORE
+  - DEEPSLATE_IRON_ORE
+  - COAL_ORE
+  - DEEPSLATE_COAL_ORE
+  - LAPIS_ORE
+  - DEEPSLATE_LAPIS_ORE
+  - REDSTONE_ORE
+  - DEEPSLATE_REDSTONE_ORE
+  - COPPER_ORE
+  - DEEPSLATE_COPPER_ORE
+  entities:
+  - ZOMBIE
+  - SKELETON
+  - CREEPER
+  - SPIDER
+  - ENDERMAN
+
+autosmelt:
+  enabled: false
+  items:
+  - RAW_IRON
+  - RAW_GOLD
+  - RAW_COPPER
+
+autocraft:
+  enabled: false
+  recipes:
+    IRON_INGOT:
+      result: IRON_BLOCK
+      amount: 9
+      result-amount: 1
+
+whitelist-version: 1</code></pre>
+        </details>
+        <div class="tags">
+          <span>Java</span>
+          <span>Paper</span>
+          <span>Folia</span>
+          <span>WorldGuard</span>
+          <span>AutoPickup</span>
+          <span>AutoSmelt</span>
+          <span>AutoCraft</span>
         </div>
       </div>
     </section>
