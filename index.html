@@ -887,6 +887,81 @@ item:
           <span>Hologram</span>
         </div>
       </div>
+
+      <div class="project-card">
+        <h3>Cage (Timed cage trap plugin)</h3>
+        <p>Spawns an inescapable cage around a player for a set duration, with editor mode and region safety.</p>
+        <div class="features-grid">
+          <div>
+            <h4>Features</h4>
+            <ul>
+              <li>Timed cage spawn with configurable block type</li>
+              <li>Editor mode to build cage structure</li>
+              <li>HeadDatabase support for cage item</li>
+              <li>KingdomsX restriction: only usable in own kingdom</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Technical</h4>
+            <ul>
+              <li>No database needed, config-driven</li>
+              <li>Cooldown and duration controls</li>
+              <li>World blacklist and spawn/despawn sounds</li>
+              <li>Custom item definition with glow and lore</li>
+            </ul>
+          </div>
+        </div>
+        <video src="https://i.imgur.com/shsoxiJ.mp4" controls loop muted playsinline preload="metadata" style="width:100%;border-radius:12px;border:1px solid var(--border);box-shadow:var(--shadow);margin:12px 0;"></video>
+        <details style="margin-top:16px;">
+          <summary style="cursor:pointer;color:var(--accent);font-weight:600;">Sample config.yml</summary>
+          <pre style="margin-top:12px;overflow:auto;background:rgba(0,0,0,0.3);padding:14px;border-radius:12px;border:1px solid var(--border);"><code>prefix: '&amp;8[&amp;#FB9208Cage&amp;8] &amp;7»'
+
+editor:
+  item:
+    type: GLASS
+    name: '&#00FF1CEditor Block'
+    lore:
+    - '&amp;7Use this block to build'
+    - '&amp;7the cage''s structure!'
+    - ''
+    - '&amp;ePlace &amp;7» &amp;fAdd Block'
+    glow: true
+
+cage:
+  block-type: SPAWNER
+  duration: 10000
+  cooldown: 10000
+  world-blacklist:
+  - world_nether
+  - world_the_end
+  cage-spawn-sound: BLOCK_ANVIL_LAND
+  cage-despawn-sound: ENTITY_ENDERMAN_TELEPORT
+  item:
+    type: PLAYER_HEAD
+    hdb: '7129'
+    name: '&amp;dCage'
+    lore:
+    - '&amp;8Information'
+    - '&amp;75 minutes ⌚'
+    - ''
+    - '&amp;fA cage spawns'
+    - '&amp;faround you, where'
+    - '&amp;ffor 30 seconds is no escape.'
+    - ''
+    - '&amp;eRight-Click &amp;6» &amp;7Activate'
+    glow: true
+    remove-on-use: false</code></pre>
+        </details>
+        <div class="tags">
+          <span>Java</span>
+          <span>Paper</span>
+          <span>Spigot</span>
+          <span>KingdomsX</span>
+          <span>HeadDatabase</span>
+          <span>Trap</span>
+          <span>Editor</span>
+        </div>
+      </div>
     </section>
 
     <section>
