@@ -633,8 +633,9 @@ gui-version: 1</code></pre>
           <div>
             <h4>Technical</h4>
             <ul>
+              <li>No database, config-driven</li>
               <li>WorldGuard hook with region flags to enable/disable</li>
-              <li>Lightweight, Paper/Folia compatible</li>
+              <li>Lightweight, Paper/Spigot compatible</li>
               <li>Separate whitelist control for pickup, smelt, craft</li>
             </ul>
           </div>
@@ -688,11 +689,202 @@ whitelist-version: 1</code></pre>
         <div class="tags">
           <span>Java</span>
           <span>Paper</span>
-          <span>Folia</span>
+          <span>Spigot</span>
           <span>WorldGuard</span>
           <span>AutoPickup</span>
           <span>AutoSmelt</span>
           <span>AutoCraft</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <h3>CustomFishing (Fishing mini-game plugin)</h3>
+        <p>Custom fishing ponds with timed mini-game, rod progression, holograms, and configurable rewards.</p>
+        <div class="features-grid">
+          <div>
+            <h4>Features</h4>
+            <ul>
+              <li>Ponds with min/max catch timers and capture windows</li>
+              <li>In-pond mini-game with moving target and subtitles</li>
+              <li>Hologram hints and configurable rewards</li>
+              <li>Allowed rods per pond and flexible block-types</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Technical</h4>
+            <ul>
+              <li>No database, config-driven ponds and rods</li>
+              <li>Supports custom rod stats with leveling</li>
+              <li>Per-pond region corners and block type control</li>
+              <li>Commands-based rewards with sounds and holograms</li>
+            </ul>
+          </div>
+        </div>
+        <video src="https://i.imgur.com/FgvxtDq.mp4" controls loop muted playsinline preload="metadata" style="width:100%;border-radius:12px;border:1px solid var(--border);box-shadow:var(--shadow);margin:12px 0;"></video>
+        <details style="margin-top:16px;">
+          <summary style="cursor:pointer;color:var(--accent);font-weight:600;">Sample ponds/ExamplePond.yml</summary>
+          <pre style="margin-top:12px;overflow:auto;background:rgba(0,0,0,0.3);padding:14px;border-radius:12px;border:1px solid var(--border);"><code>name: ExamplePond
+
+min-catch-time: 3
+max-catch-time: 10
+max-capture-time: 5
+
+block-type: WATER
+
+game:
+  enabled: true
+  total-width: 10~15
+  success-width: 2~4
+  difficulty: 30~60
+  time: 10
+  body: '&amp;f|&amp;f'
+  target: '&amp;a|&amp;a'
+  pointer: '&amp;c|&amp;c'
+  subtitle: '&amp;fLeft-click in the right time! Time: &amp;c%time%&amp;fseconds'
+
+corner1:
+  world: world
+  x: 0.0
+  y: 0.0
+  z: 0.0
+
+corner2:
+  world: world
+  x: 0.0
+  y: 0.0
+  z: 0.0
+
+allowed-rods:
+- ExampleRod
+
+hologram:
+  enabled: true
+  lines:
+  - '&amp;cExamplePond'
+  - '&amp;fUse your Rod to catch'
+  - '&amp;fvaluable fishes!'
+  offset:
+    x: 0.0
+    y: 3.0
+    z: 0.0
+rewards:
+  rare_fish:
+    display-name: Rare Fish
+    chance: 30.0
+    commands:
+    - give %player% minecraft:salmon 1
+    - give %player% minecraft:diamond 1
+    catch-message: '&amp;aYou catched a Rare Fish!'
+    catch-sound: UI_TOAST_CHALLENGE_COMPLETE
+    hologram-lines:
+    - '&amp;6&amp;lRare Fish'
+    - '&amp;f+1 Salmon +1 Diamond'
+  legendary_fish:
+    display-name: Legendary Fish
+    chance: 15.0
+    commands:
+    - give %player% minecraft:tropical_fish 1
+    - give %player% minecraft:diamond 3
+    - give %player% minecraft:emerald 1
+    catch-message: '&amp;aYou catched a Legendary Fish!'
+    catch-sound: UI_TOAST_CHALLENGE_COMPLETE
+    hologram-lines:
+    - '&amp;6&amp;lLegendary Fish'
+    - '&amp;f+1 Tropical Fish +3 Diamond +1 Emerald'
+  treasure:
+    display-name: Treasure
+    chance: 5.0
+    commands:
+    - give %player% minecraft:diamond 5
+    - give %player% minecraft:emerald 3
+    - give %player% minecraft:gold_ingot 10
+    catch-message: '&amp;aYou found a treasure!'
+    catch-sound: BLOCK_CHEST_OPEN
+    hologram-lines:
+    - '&amp;b&amp;lTreasure'
+    - '&amp;f+5 Diamond +3 Emerald +10 Gold'
+  common_fish:
+    display-name: Common Fish
+    chance: 50.0
+    commands:
+    - give %player% minecraft:cod 1
+    catch-message: '&amp;aYou catched a Common Fish!'
+    catch-sound: ENTITY_PLAYER_LEVELUP
+    hologram-lines:
+    - '&amp;6&amp;lCommon Fish'
+    - '&amp;f+1 Fish'</code></pre>
+        </details>
+        <details style="margin-top:10px;">
+          <summary style="cursor:pointer;color:var(--accent);font-weight:600;">Sample rods/ExampleRod.yml</summary>
+          <pre style="margin-top:12px;overflow:auto;background:rgba(0,0,0,0.3);padding:14px;border-radius:12px;border:1px solid var(--border);"><code>display-name: ExampleRod
+
+max-level: 10
+base-luck: 1.0
+base-speed: 1.0
+base-durability: 100
+
+level-settings:
+  '1':
+    luck-multiplier: 1.0
+    speed-multiplier: 1.0
+    max-durability: 100
+  '2':
+    luck-multiplier: 1.2
+    speed-multiplier: 1.1
+    max-durability: 150
+  '3':
+    luck-multiplier: 1.4
+    speed-multiplier: 1.2
+    max-durability: 200
+  '4':
+    luck-multiplier: 1.6
+    speed-multiplier: 1.3
+    max-durability: 250
+  '5':
+    luck-multiplier: 1.8
+    speed-multiplier: 1.4
+    max-durability: 300
+  '6':
+    luck-multiplier: 2.0
+    speed-multiplier: 1.5
+    max-durability: 400
+  '7':
+    luck-multiplier: 2.3
+    speed-multiplier: 1.6
+    max-durability: 500
+  '8':
+    luck-multiplier: 2.6
+    speed-multiplier: 1.7
+    max-durability: 600
+  '9':
+    luck-multiplier: 3.0
+    speed-multiplier: 1.8
+    max-durability: 750
+  '10':
+    luck-multiplier: 3.5
+    speed-multiplier: 2.0
+    max-durability: 1000
+
+item:
+  material: FISHING_ROD
+  glow: true
+  name: '&#2FF7FF%display_name% &amp;7&amp;o(Level %level%)'
+  lore:
+  - ' '
+  - '&amp;fLuck: &amp;#2FF7FF%luck%'
+  - '&amp;fSpeed: &amp;#2FF7FF%speed%'
+  - '&amp;fDurability: &amp;#2FF7FF%durability%/%max_durability%'
+  - ''
+  - '&amp;eRight-Click &amp;6» &amp;7Start Fishing'</code></pre>
+        </details>
+        <div class="tags">
+          <span>Java</span>
+          <span>Paper</span>
+          <span>Spigot</span>
+          <span>MiniGame</span>
+          <span>Fishing</span>
+          <span>GUI</span>
+          <span>Hologram</span>
         </div>
       </div>
     </section>
