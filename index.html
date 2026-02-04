@@ -301,7 +301,7 @@
         </div>
       </div>
 
-      <div class="project-card">
+      <div class="project-card" style="margin-bottom:18px;">
         <h3>CocoFFA (Free For All plugin)</h3>
         <p><a href="https://www.spigotmc.org/resources/cocoffa.128313/" target="_blank" rel="noreferrer">Spigot resource</a> — Free For All plugin with GUI-first setup.</p>
         <div class="features-grid">
@@ -334,6 +334,115 @@
           <span>GUI</span>
           <span>FFA</span>
         </div>
+      </div>
+
+      <div class="project-card">
+        <h3>CocoPearls (Ender pearl protection plugin)</h3>
+        <p><a href="https://www.spigotmc.org/resources/cocoffa.128313/" target="_blank" rel="noreferrer">Spigot resource</a> — a must-have for PvP servers to stop all ender pearl glitches and fine-tune pearl behavior.</p>
+        <div class="features-grid">
+          <div>
+            <h4>Features</h4>
+            <ul>
+              <li>Blocks ender pearl exploits</li>
+              <li>Teammate pearl passthrough (team hooks)</li>
+              <li>Custom cooldown, damage, and endermite chance</li>
+              <li>Refund on failed landings</li>
+              <li>Particle customization and throw strength control</li>
+              <li>Supports tight spaces with swimming-mode pearls</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Technical</h4>
+            <ul>
+              <li>Config-driven, no database dependency</li>
+              <li>Paper/Spigot/Folia compatible</li>
+              <li>Lightweight, no GUI editor</li>
+              <li>Team plugin hooks available</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tags">
+          <span>Java</span>
+          <span>Spigot</span>
+          <span>Paper</span>
+          <span>Folia</span>
+          <span>Config-only</span>
+          <span>EnderPearl</span>
+        </div>
+        <details style="margin-top:16px;">
+          <summary style="cursor:pointer;color:var(--accent);font-weight:600;">Sample config.yml</summary>
+          <pre style="margin-top:12px;overflow:auto;background:rgba(0,0,0,0.3);padding:14px;border-radius:12px;border:1px solid var(--border);"><code>prefix: "&amp;#F31DFFC&amp;#EE1BFFo&amp;#E919FFc&amp;#E417FFo&amp;#DF16FFP&amp;#DA14FFe&amp;#D512FFa&amp;#D010FFr&amp;#CB0EFFls &amp;7» "
+
+# if enabled and a team plugin is installed, (check hooks.yml)
+# pearls will go through your teammates
+teammate-pearl-passthrough: true
+
+# allow players to squeeze themselves into places with ender pearls where they can only fit in swimming mode?
+allow-swimming-mode: true
+
+# how likely should it be that after a pearl teleport, an endermite will spawn?
+# 0 to 100 (in percents)
+# in vanilla, this is set to 5.0
+# set to 0 to disable
+endermite-spawn-chance: 0.0
+
+# how much damage should the player take when their ender pearl lands
+# in vanilla, this is set to 5.0
+# set to 0 to disable
+ender-pearl-damage: 5.0
+
+# how much damage should players take when they get hit by an ender pearl?
+# in vanilla, this is set to 0.0
+# set to 0 to disable
+ender-pearl-hit-damage: 0.0
+
+# pearl cooldown in milliseconds
+# you can give per player cooldown with the "axpearls.cooldown.&lt;milliseconds&gt;" permission
+# set to -1 to disable
+pearl-cooldown-milliseconds: 5000
+
+# should the plugin override the vanilla ender pearl cooldown display?
+show-cooldown-on-item: true
+
+# if no safe location can be found, should the pearl be refunded?
+refund-on-fail: true
+
+# syntax: https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/text/DecimalFormat.html
+# some examples:
+# '0.0' (decimal separator: .)
+# '0,0' (decimal separator: ,)
+# '0' (only show seconds)
+# '0.00' (multiple decimals)
+timer-number-format: "0.0"
+
+# how far/fast should the ender pearl go?
+# 0.5 will be half speed, 2.0 will be double speed
+# the default/vanilla value is 1.0
+pearl-throw-strength: 1.0
+
+particle:
+  enabled: true
+  # list of particles: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Particle.html
+  type: PORTAL
+  # amount of particles to spawn
+  amount: 32
+
+# do not change
+config-version: 1</code></pre>
+        </details>
+        <details style="margin-top:10px;">
+          <summary style="cursor:pointer;color:var(--accent);font-weight:600;">Sample hooks.yml</summary>
+          <pre style="margin-top:12px;overflow:auto;background:rgba(0,0,0,0.3);padding:14px;border-radius:12px;border:1px solid var(--border);"><code>hooks:
+  # - BetterTeams
+  # - GangsPlus
+  # - CocoGuild
+  # - KingdomsX
+  # - UltimateClans
+  team-plugin: "none"
+
+# do not change
+hooks-version: 1</code></pre>
+        </details>
       </div>
     </section>
 
