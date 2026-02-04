@@ -336,7 +336,7 @@
         </div>
       </div>
 
-      <div class="project-card">
+      <div class="project-card" style="margin-bottom:18px;">
         <h3>CocoPearls (Ender pearl protection plugin)</h3>
         <p>A must-have for PvP servers to stop all ender pearl glitches and fine-tune pearl behavior.</p>
         <div class="features-grid">
@@ -403,6 +403,215 @@ hooks-version: 1</code></pre>
           <span>Folia</span>
           <span>LightWeight</span>
           <span>EnderPearl</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <h3>CocoLevels (Leveling and conversion plugin)</h3>
+        <p>Level system with multi-database support, GUI changers, placeholders, and converters between XP, levels, currency, and commands.</p>
+        <div class="features-grid">
+          <div>
+            <h4>Features</h4>
+            <ul>
+              <li>Levels with XP tracking and toplists</li>
+              <li>GUI changers for XP, levels, currency, commands</li>
+              <li>PlaceholderAPI and HeadDatabase hooks</li>
+              <li>Level converter and configurable formats</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Technical</h4>
+            <ul>
+              <li>SQLite, MySQL, PostgreSQL, MariaDB, MongoDB</li>
+              <li>Configurable table prefix and drivers</li>
+              <li>Custom placeholders for XP, level, toplists</li>
+              <li>GUI-defined actions and currencies</li>
+            </ul>
+          </div>
+        </div>
+        <details style="margin-top:16px;">
+          <summary style="cursor:pointer;color:var(--accent);font-weight:600;">Sample config.yml</summary>
+          <pre style="margin-top:12px;overflow:auto;background:rgba(0,0,0,0.3);padding:14px;border-radius:12px;border:1px solid var(--border);"><code>prefix: "&amp;8[&amp;#FF0048C&amp;#FA0046o&amp;#F40045c&amp;#EF0043o&amp;#EA0042L&amp;#E40040e&amp;#DF003Fv&amp;#DA003De&amp;#D4003Cl&amp;#CF003As&amp;8] &amp;7»"
+messages_file: "messages_en"
+reset_xp_on_levelup: true
+
+default_values:
+  level: 0
+  xp: 0.0
+
+hooks:
+  PlaceholderAPI:
+    enabled: true
+  HeadDatabase:
+    enabled: true
+
+toplist:
+  page_size: 10
+  cooldown_seconds: 2
+
+formats:
+  xp: "#,##0"
+  level: "#,##0"
+
+database:
+  type: "sqlite"
+  table_prefix: "cocolevels_"
+  host: "localhost"
+  port: 3306
+  database: "cocolevels"
+  username: "root"
+  password: ""
+  mongo_uri: "mongodb://localhost:27017"
+
+placeholders:
+  prefix: "cocolevels"
+  xp:
+    placeholder: "xp"
+    value: "&amp;b{value} XP"
+    none: "0 XP"
+
+  level:
+    placeholder: "level"
+    value: "&amp;6Level {value}"
+    none: "Level 0"
+
+  toplist_xp:
+    placeholder: "toplist_xp_&lt;place&gt;"
+    value: "&amp;#f5c400#%place% &amp;f%player% &amp;7» &amp;#FF3737%count% XP"
+    none: "&amp;#f5c400#%place% &amp;f- &amp;7» &amp;#FF3737- XP"
+
+  toplist_level:
+    placeholder: "toplist_level_&lt;place&gt;"
+    value: "&amp;#f5c400#%place% &amp;f%player% &amp;7» &amp;#FF3737Level %count%"
+    none: "&amp;#f5c400#%place% &amp;f- &amp;7» &amp;#FF3737Level -"
+
+config-version: 1</code></pre>
+        </details>
+        <details style="margin-top:10px;">
+          <summary style="cursor:pointer;color:var(--accent);font-weight:600;">Sample changers.yml</summary>
+          <pre style="margin-top:12px;overflow:auto;background:rgba(0,0,0,0.3);padding:14px;border-radius:12px;border:1px solid var(--border);"><code>changers:
+  xp_to_money:
+    type: "xp"
+    cost: 100
+    action: "currency:money:50"
+
+  level_to_money:
+    type: "level"
+    cost: 1
+    action: "currency:money:500"
+
+  xp_to_command:
+    type: "xp"
+    cost: 500
+    action: "command:give {player} diamond 5"
+
+currencies:
+  money:
+    give_command: "eco give {player} {amount}"
+
+changers-version: 1</code></pre>
+        </details>
+        <details style="margin-top:10px;">
+          <summary style="cursor:pointer;color:var(--accent);font-weight:600;">Sample gui.yml</summary>
+          <pre style="margin-top:12px;overflow:auto;background:rgba(0,0,0,0.3);padding:14px;border-radius:12px;border:1px solid var(--border);"><code>changer:
+  title: "&amp;bLevel Changer"
+  rows: 6
+  items:
+    background:
+      material: BLACK_STAINED_GLASS_PANE
+      name: " "
+      lore: []
+      slots:
+        - 0
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+        - 6
+        - 7
+        - 8
+        - 9
+        - 17
+        - 18
+        - 26
+        - 27
+        - 35
+        - 36
+        - 44
+        - 45
+        - 46
+        - 47
+        - 48
+        - 49
+        - 50
+        - 51
+        - 52
+        - 53
+
+    xp_to_money:
+      material: GOLD_INGOT
+      name: "&amp;6Convert XP to Money"
+      lore:
+        - ""
+        - "&amp;7Convert your XP points"
+        - "&amp;7to server currency!"
+        - ""
+        - "&amp;eCost: &amp;f100 XP"
+        - "&amp;eReward: &amp;f$50"
+        - ""
+        - "&amp;aClick to convert!"
+      slot: 20
+      action: "changer:xp_to_money"
+
+    level_to_money:
+      material: DIAMOND
+      name: "&amp;bConvert Level to Money"
+      lore:
+        - ""
+        - "&amp;7Convert your levels"
+        - "&amp;7to server currency!"
+        - ""
+        - "&amp;eCost: &amp;f1 Level"
+        - "&amp;eReward: &amp;f$500"
+        - ""
+        - "&amp;aClick to convert!"
+      slot: 22
+      action: "changer:level_to_money"
+
+    xp_to_command:
+      material: COMMAND_BLOCK
+      name: "&amp;dXP to Special Reward"
+      lore:
+        - ""
+        - "&amp;7Exchange XP for"
+        - "&amp;7special rewards!"
+        - ""
+        - "&amp;eCost: &amp;f500 XP"
+        - ""
+        - "&amp;aClick to exchange!"
+      slot: 24
+      action: "changer:xp_to_command"
+
+    close:
+      material: BARRIER
+      name: "&amp;cClose"
+      lore:
+        - "&amp;7Click to close this menu"
+      slot: 49
+      action: "close"
+
+gui-version: 1</code></pre>
+        </details>
+        <div class="tags">
+          <span>Java</span>
+          <span>MySQL</span>
+          <span>PostgreSQL</span>
+          <span>MariaDB</span>
+          <span>SQLite</span>
+          <span>MongoDB</span>
+          <span>GUI</span>
+          <span>Levels</span>
         </div>
       </div>
     </section>
